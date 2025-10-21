@@ -1,0 +1,553 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+}
+
+/* Main screensaver container */
+.screensaver-container {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: relative;
+    cursor: none;
+    overflow: hidden;
+}
+
+/* Initial message that fades out on hover */
+.initial-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+    pointer-events: none;
+}
+
+.initial-message p {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Hide message on hover */
+.screensaver-container:hover .initial-message {
+    opacity: 0;
+}
+
+/* Ripple container */
+.ripple-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+}
+
+/* Fade in ripples on hover */
+.screensaver-container:hover .ripple-container {
+    opacity: 1;
+}
+
+/* Base ripple style */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Individual ripple positioning and animations */
+.ripple-1 {
+    width: 400px;
+    height: 400px;
+    top: 20%;
+    left: 15%;
+    background: radial-gradient(circle at center, 
+        rgba(100, 200, 255, 0.4) 0%, 
+        rgba(50, 150, 255, 0.2) 30%, 
+        transparent 70%);
+    box-shadow: 0 0 80px rgba(100, 200, 255, 0.6),
+                inset 0 0 60px rgba(100, 200, 255, 0.3);
+}
+
+.screensaver-container:hover .ripple-1 {
+    animation: ripple-bounce-1 8s infinite ease-in-out;
+}
+
+.ripple-2 {
+    width: 350px;
+    height: 350px;
+    top: 60%;
+    left: 70%;
+    background: radial-gradient(circle at center, 
+        rgba(150, 220, 255, 0.5) 0%, 
+        rgba(80, 180, 255, 0.25) 30%, 
+        transparent 70%);
+    box-shadow: 0 0 70px rgba(150, 220, 255, 0.7),
+                inset 0 0 50px rgba(150, 220, 255, 0.4);
+}
+
+.screensaver-container:hover .ripple-2 {
+    animation: ripple-bounce-2 10s infinite ease-in-out 1s;
+}
+
+.ripple-3 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    left: 50%;
+    background: radial-gradient(circle at center, 
+        rgba(120, 210, 255, 0.45) 0%, 
+        rgba(60, 160, 255, 0.22) 30%, 
+        transparent 70%);
+    box-shadow: 0 0 60px rgba(120, 210, 255, 0.65),
+                inset 0 0 45px rgba(120, 210, 255, 0.35);
+}
+
+.screensaver-container:hover .ripple-3 {
+    animation: ripple-bounce-3 12s infinite ease-in-out 2s;
+}
+
+.ripple-4 {
+    width: 450px;
+    height: 450px;
+    top: 10%;
+    left: 60%;
+    background: radial-gradient(circle at center, 
+        rgba(80, 190, 255, 0.35) 0%, 
+        rgba(40, 140, 255, 0.18) 30%, 
+        transparent 70%);
+    box-shadow: 0 0 90px rgba(80, 190, 255, 0.55),
+                inset 0 0 65px rgba(80, 190, 255, 0.3);
+}
+
+.screensaver-container:hover .ripple-4 {
+    animation: ripple-bounce-4 15s infinite ease-in-out 0.5s;
+}
+
+.ripple-5 {
+    width: 380px;
+    height: 380px;
+    top: 70%;
+    left: 25%;
+    background: radial-gradient(circle at center, 
+        rgba(140, 215, 255, 0.4) 0%, 
+        rgba(70, 170, 255, 0.2) 30%, 
+        transparent 70%);
+    box-shadow: 0 0 75px rgba(140, 215, 255, 0.6),
+                inset 0 0 55px rgba(140, 215, 255, 0.32);
+}
+
+.screensaver-container:hover .ripple-5 {
+    animation: ripple-bounce-5 11s infinite ease-in-out 1.5s;
+}
+
+/* Keyframe animations for ripples - each bounces differently */
+@keyframes ripple-bounce-1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(120px, -80px) scale(1.2);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(200px, 60px) scale(0.9);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translate(-50px, 100px) scale(1.1);
+        opacity: 0.75;
+    }
+}
+
+@keyframes ripple-bounce-2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+    }
+    30% {
+        transform: translate(-150px, -100px) scale(1.15);
+        opacity: 0.85;
+    }
+    60% {
+        transform: translate(-80px, 80px) scale(0.95);
+        opacity: 0.65;
+    }
+    80% {
+        transform: translate(100px, -60px) scale(1.05);
+        opacity: 0.75;
+    }
+}
+
+@keyframes ripple-bounce-3 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.65;
+    }
+    20% {
+        transform: translate(80px, 120px) scale(1.1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-120px, -70px) scale(0.85);
+        opacity: 0.7;
+    }
+    70% {
+        transform: translate(60px, -90px) scale(1.2);
+        opacity: 0.75;
+    }
+}
+
+@keyframes ripple-bounce-4 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    35% {
+        transform: translate(-180px, 90px) scale(1.25);
+        opacity: 0.7;
+    }
+    65% {
+        transform: translate(50px, -110px) scale(0.9);
+        opacity: 0.6;
+    }
+    85% {
+        transform: translate(130px, 70px) scale(1.1);
+        opacity: 0.65;
+    }
+}
+
+@keyframes ripple-bounce-5 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    28% {
+        transform: translate(140px, -95px) scale(1.18);
+        opacity: 0.82;
+    }
+    55% {
+        transform: translate(-90px, 85px) scale(0.92);
+        opacity: 0.68;
+    }
+    78% {
+        transform: translate(70px, 105px) scale(1.08);
+        opacity: 0.73;
+    }
+}
+
+/* Floating text elements */
+.float-text {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+    transition: opacity 1s ease-in;
+}
+
+/* Show text on hover */
+.screensaver-container:hover .float-text {
+    opacity: 1;
+}
+
+/* Position and animate each text element uniquely */
+.text-1 {
+    top: 15%;
+    left: 20%;
+}
+
+.screensaver-container:hover .text-1 {
+    animation: float-1 14s infinite ease-in-out;
+}
+
+.text-2 {
+    top: 25%;
+    left: 75%;
+}
+
+.screensaver-container:hover .text-2 {
+    animation: float-2 11s infinite ease-in-out 0.5s;
+}
+
+.text-3 {
+    top: 45%;
+    left: 10%;
+}
+
+.screensaver-container:hover .text-3 {
+    animation: float-3 16s infinite ease-in-out 1s;
+}
+
+.text-4 {
+    top: 55%;
+    left: 85%;
+}
+
+.screensaver-container:hover .text-4 {
+    animation: float-4 13s infinite ease-in-out 1.5s;
+}
+
+.text-5 {
+    top: 70%;
+    left: 30%;
+}
+
+.screensaver-container:hover .text-5 {
+    animation: float-5 15s infinite ease-in-out 2s;
+}
+
+.text-6 {
+    top: 80%;
+    left: 65%;
+}
+
+.screensaver-container:hover .text-6 {
+    animation: float-1 12s infinite ease-in-out 2.5s;
+}
+
+.text-7 {
+    top: 35%;
+    left: 45%;
+}
+
+.screensaver-container:hover .text-7 {
+    animation: float-2 17s infinite ease-in-out 3s;
+}
+
+.text-8 {
+    top: 60%;
+    left: 55%;
+}
+
+.screensaver-container:hover .text-8 {
+    animation: float-3 14s infinite ease-in-out 0.8s;
+}
+
+.text-9 {
+    top: 20%;
+    left: 50%;
+}
+
+.screensaver-container:hover .text-9 {
+    animation: float-4 13s infinite ease-in-out 1.2s;
+}
+
+.text-10 {
+    top: 50%;
+    left: 15%;
+}
+
+.screensaver-container:hover .text-10 {
+    animation: float-5 16s infinite ease-in-out 1.8s;
+}
+
+.text-11 {
+    top: 10%;
+    left: 80%;
+}
+
+.screensaver-container:hover .text-11 {
+    animation: float-1 15s infinite ease-in-out 2.3s;
+}
+
+.text-12 {
+    top: 85%;
+    left: 20%;
+}
+
+.screensaver-container:hover .text-12 {
+    animation: float-2 12s infinite ease-in-out 2.8s;
+}
+
+.text-13 {
+    top: 40%;
+    left: 70%;
+}
+
+.screensaver-container:hover .text-13 {
+    animation: float-3 14s infinite ease-in-out 0.3s;
+}
+
+.text-14 {
+    top: 65%;
+    left: 40%;
+}
+
+.screensaver-container:hover .text-14 {
+    animation: float-4 16s infinite ease-in-out 1.7s;
+}
+
+.text-15 {
+    top: 30%;
+    left: 25%;
+}
+
+.screensaver-container:hover .text-15 {
+    animation: float-5 13s infinite ease-in-out 2.2s;
+}
+
+.text-16 {
+    top: 75%;
+    left: 80%;
+}
+
+.screensaver-container:hover .text-16 {
+    animation: float-1 17s infinite ease-in-out 0.6s;
+}
+
+.text-17 {
+    top: 18%;
+    left: 35%;
+}
+
+.screensaver-container:hover .text-17 {
+    animation: float-2 15s infinite ease-in-out 1.4s;
+}
+
+.text-18 {
+    top: 58%;
+    left: 60%;
+}
+
+.screensaver-container:hover .text-18 {
+    animation: float-3 11s infinite ease-in-out 2.1s;
+}
+
+.text-19 {
+    top: 48%;
+    left: 90%;
+}
+
+.screensaver-container:hover .text-19 {
+    animation: float-4 14s infinite ease-in-out 2.6s;
+}
+
+.text-20 {
+    top: 88%;
+    left: 50%;
+}
+
+.screensaver-container:hover .text-20 {
+    animation: float-5 16s infinite ease-in-out 0.9s;
+}
+
+/* Floating text animations */
+@keyframes float-1 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(60px, -40px);
+    }
+    50% {
+        transform: translate(30px, 50px);
+    }
+    75% {
+        transform: translate(-40px, 20px);
+    }
+}
+
+@keyframes float-2 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    30% {
+        transform: translate(-50px, 45px);
+    }
+    60% {
+        transform: translate(40px, -30px);
+    }
+    80% {
+        transform: translate(25px, 35px);
+    }
+}
+
+@keyframes float-3 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(45px, 50px);
+    }
+    50% {
+        transform: translate(-35px, -25px);
+    }
+    70% {
+        transform: translate(30px, 40px);
+    }
+}
+
+@keyframes float-4 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    35% {
+        transform: translate(-45px, -35px);
+    }
+    65% {
+        transform: translate(50px, 30px);
+    }
+    85% {
+        transform: translate(-20px, 45px);
+    }
+}
+
+@keyframes float-5 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    28% {
+        transform: translate(55px, 38px);
+    }
+    55% {
+        transform: translate(-40px, -42px);
+    }
+    78% {
+        transform: translate(35px, -28px);
+    }
+}
+
+/* Add focus state for accessibility - changes ripple colors */
+.screensaver-container:focus {
+    outline: none;
+}
+
+.screensaver-container:focus .ripple-1 {
+    background: radial-gradient(circle at center, 
+        rgba(255, 100, 150, 0.4) 0%, 
+        rgba(255, 50, 100, 0.2) 30%, 
+        transparent 70%);
+}
+
+.screensaver-container:focus .ripple-2 {
+    background: radial-gradient(circle at center, 
+        rgba(150, 255, 150, 0.5) 0%, 
+        rgba(80, 255, 80, 0.25) 30%, 
+        transparent 70%);
+}
+
+/* Active state speeds up animations */
+.screensaver-container:active .ripple {
+    animation-duration: 4s !important;
+}
+
+.screensaver-container:active .float-text {
+    animation-duration: 6s !important;
+}
