@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Observer Effect | Net Art Exhibition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Face detection library for eye tracking -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+    <!-- Webcam Background (blurred) -->
+    <div id="webcam-container">
+        <video id="webcam" autoplay playsinline muted></video>
+        <div id="webcam-overlay"></div>
+        <div id="camera-denied">
+            <span class="blink">[CAMERA ACCESS DENIED]</span>
+            <p>You are still being observed.</p>
+        </div>
+    </div>
+
+    <!-- Surveillance Data Header -->
+    <header id="surveillance-header">
+        <div class="data-row">
+            <span class="data-label">IP:</span>
+            <span id="user-ip" class="data-value">DETECTING...</span>
+            <span class="separator">|</span>
+            <span class="data-label">LOCATION:</span>
+            <span id="user-location" class="data-value">TRIANGULATING...</span>
+            <span class="separator">|</span>
+            <span class="data-label">DEVICE:</span>
+            <span id="user-device" class="data-value">SCANNING...</span>
+        </div>
+        <div class="data-row secondary">
+            <span class="data-label">BROWSER:</span>
+            <span id="user-browser" class="data-value">IDENTIFYING...</span>
+            <span class="separator">|</span>
+            <span class="data-label">SCREEN:</span>
+            <span id="user-screen" class="data-value">MEASURING...</span>
+            <span class="separator">|</span>
+            <span class="data-label">TIME ON PAGE:</span>
+            <span id="time-on-page" class="data-value">00:00:00</span>
+        </div>
+        <div class="data-row tertiary ai-detection">
+            <span class="data-label">👁 EYE COLOR:</span>
+            <span id="user-eye-color" class="data-value">AWAITING VISUAL...</span>
+            <span class="separator">|</span>
+            <span class="data-label">HAIR:</span>
+            <span id="user-hair-color" class="data-value">AWAITING VISUAL...</span>
+            <span class="separator">|</span>
+            <span class="data-label">ENVIRONMENT:</span>
+            <span id="user-background" class="data-value">AWAITING VISUAL...</span>
+            <span class="separator">|</span>
+            <span class="data-label">GAZE:</span>
+            <span id="user-gaze" class="data-value">TRACKING...</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="exhibition-content">
+        <!-- Title Section -->
+        <section id="title-section">
+            <h1 class="glitch" data-text="THE OBSERVER EFFECT">THE OBSERVER EFFECT</h1>
+            <h2 class="subtitle">Identity and the Networked Gaze</h2>
+            <p class="curator">Exhibition curated by <span class="name">Dasean</span></p>
+        </section>
+
+        <!-- Curatorial Text -->
+        <section id="curatorial-text">
+            <div class="text-container">
+                <p>In physics, the observer effect describes how the act of measurement fundamentally changes what is being measured. This exhibition applies that principle to the networked self, presenting four works from 2007–2014 that interrogate how watching and being watched online transforms both observer and observed.</p>
+                
+                <p>During this pivotal period, social media transitioned from novelty to infrastructure, and these artists were among the first to critically examine its psychological toll. Amalia Ulman's fabricated Instagram breakdown revealed how audiences project meaning onto curated personas. Wafaa Bilal made observation violent and literal, allowing online viewers to physically assault him with a paintball gun. Ann Hirsch discovered that performing confidence for strangers actually made her confident—the mask became the face. Kristin Lucas took this transformation to its logical extreme, legally "refreshing" her identity as one would a webpage.</p>
+                
+                <p>Together, these works expose the internet not as a passive window but as a force that reshapes identity, erodes the boundary between performance and selfhood, and implicates all of us as both watchers and watched. <span class="highlight">The screen is not neutral. To observe is to act.</span></p>
+            </div>
+        </section>
+
+        <!-- Artworks Grid -->
+        <section id="artworks">
+            <h3 class="section-title">[WORKS IN EXHIBITION]</h3>
+            
+            <div class="artwork-grid">
+                <!-- Work 1: Excellences & Perfections -->
+                <article class="artwork-card" data-work="1">
+                    <div class="artwork-image">
+                        <img src="img/work1.png" alt="Excellences & Perfections by Amalia Ulman">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="artwork-info">
+                        <h4 class="artwork-title">Excellences & Perfections</h4>
+                        <p class="artwork-meta">Amalia Ulman | 2014</p>
+                        <p class="artwork-description">A five-month scripted performance on Instagram in which Ulman posed as a young woman undergoing a breakdown, cosmetic surgery, and recovery. Nearly 90,000 followers believed the narrative was real—exposing how social media audiences construct and consume female identity.</p>
+                        <a href="https://anthology.rhizome.org/excellences-perfections" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                    </div>
+                </article>
+
+                <!-- Work 2: Domestic Tension -->
+                <article class="artwork-card" data-work="2">
+                    <div class="artwork-image">
+                        <img src="img/work2.gif" alt="Domestic Tension by Wafaa Bilal">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="artwork-info">
+                        <h4 class="artwork-title">Domestic Tension</h4>
+                        <p class="artwork-meta">Wafaa Bilal | 2007</p>
+                        <p class="artwork-description">A 30-day durational performance broadcast 24/7 online. Viewers could chat with the Iraqi-American artist—or shoot him with a remotely controlled paintball gun. Over 65,000 pellets were fired from 136 countries, making the violence of distant observation brutally tangible.</p>
+                        <a href="https://anthology.rhizome.org/domestic-tension" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                    </div>
+                </article>
+
+                <!-- Work 3: Scandalishious -->
+                <article class="artwork-card" data-work="3">
+                    <div class="artwork-image">
+                        <img src="img/work3.jpeg" alt="Scandalishious by Ann Hirsch">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="artwork-info">
+                        <h4 class="artwork-title">Scandalishious</h4>
+                        <p class="artwork-meta">Ann Hirsch | 2008–2009</p>
+                        <p class="artwork-description">An eighteen-month YouTube performance as "Caroline," a college freshman who danced and vlogged for a devoted following. Hirsch began feeling insecure; by the end, performing confidence had genuinely transformed her self-perception. The mask became the face.</p>
+                        <a href="https://anthology.rhizome.org/scandalishious" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                    </div>
+                </article>
+
+                <!-- Work 4: Refresh -->
+                <article class="artwork-card" data-work="4">
+                    <div class="artwork-image">
+                        <img src="img/work4.png" alt="Refresh by Kristin Lucas">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="artwork-info">
+                        <h4 class="artwork-title">Refresh</h4>
+                        <p class="artwork-meta">Kristin Lucas | 2007</p>
+                        <p class="artwork-description">A legal performance in which Lucas petitioned a California court to change her name from "Kristin Sue Lucas" to "Kristin Sue Lucas"—to refresh herself like a webpage. The judge granted it, revealing how internet logic has restructured our understanding of identity itself.</p>
+                        <a href="https://anthology.rhizome.org/refresh" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Behavior Tracking Ticker -->
+    <footer id="behavior-ticker">
+        <div class="ticker-wrapper">
+            <div id="ticker-content">
+                <span class="ticker-item">[INITIALIZING OBSERVATION PROTOCOLS...]</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Observation Log (floating) -->
+    <div id="observation-log">
+        <div class="log-header">[LIVE OBSERVATION LOG]</div>
+        <div id="log-entries"></div>
+    </div>
+
+    <!-- Camera Request Modal -->
+    <div id="camera-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">◉</div>
+            <h3>The Observer Effect Digital Exhibition</h3>
+            <p class="tagline">Observation creates reality</p>
+            <p>To fully experience "The Observer Effect," allow camera access. Your image will be blurred and is not recorded or transmitted.</p>
+            <p class="warning">Do you consent to being seen?</p>
+            <p class="note">(No human observer)</p>
+            <button id="allow-camera" class="modal-btn">I CONSENT TO BEING SEEN</button>
+            <button id="deny-camera" class="modal-btn secondary">REMAIN UNSEEN</button>
+        </div>
+    </div>
+
+    <!-- Floating Eye Tracker -->
+    <div id="gaze-eye">
+        <div class="eye-outer">
+            <div class="eye-inner">
+                <div class="eye-pupil"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/observer.js"></script>
+</body>
+</html>
