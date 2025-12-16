@@ -94,7 +94,7 @@
                         <h4 class="artwork-title">Excellences & Perfections</h4>
                         <p class="artwork-meta">Amalia Ulman | 2014</p>
                         <p class="artwork-description">A five-month scripted performance on Instagram in which Ulman posed as a young woman undergoing a breakdown, cosmetic surgery, and recovery. Nearly 90,000 followers believed the narrative was real—exposing how social media audiences construct and consume female identity.</p>
-                        <a href="https://webarchives.rhizome.org/excellences-and-perfections/" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                        <a href="https://anthology.rhizome.org/excellences-perfections" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
                     </div>
                 </article>
 
@@ -139,6 +139,34 @@
                         <a href="https://anthology.rhizome.org/refresh" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
                     </div>
                 </article>
+
+                <!-- Work 5: VVEBCAM -->
+                <article class="artwork-card" data-work="5">
+                    <div class="artwork-image">
+                        <img src="img/work5.png" alt="VVEBCAM by Petra Cortright">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="artwork-info">
+                        <h4 class="artwork-title">VVEBCAM</h4>
+                        <p class="artwork-meta">Petra Cortright | 2007</p>
+                        <p class="artwork-description">A YouTube video where Cortright stares into her webcam as cartoonish clip art floats around her face. Using spam keywords to lure viewers seeking provocative content, she turns observation back on the observer—confronting their gaze with her mundane, hypnotic presence. YouTube deleted it in 2011.</p>
+                        <a href="https://anthology.rhizome.org/vvebcam" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                    </div>
+                </article>
+
+                <!-- Work 6: Marisa's American Idol Audition Training Blog -->
+                <article class="artwork-card" data-work="6">
+                    <div class="artwork-image">
+                        <img src="img/work6.png" alt="Marisa's American Idol Audition Training Blog by Marisa Olson">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="artwork-info">
+                        <h4 class="artwork-title">Marisa's American Idol Audition Training Blog</h4>
+                        <p class="artwork-meta">Marisa Olson | 2004</p>
+                        <p class="artwork-description">A year-long blog documenting Olson's training to audition for American Idol. Thousands of readers voted on her wardrobe and songs, co-authoring her transformation while she critiqued the show's gender norms. Being watched became a collaborative act of identity construction.</p>
+                        <a href="https://anthology.rhizome.org/marisa-s-american-idol-audition-training-blog" target="_blank" class="artwork-link">[VIEW ON RHIZOME →]</a>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
@@ -172,14 +200,49 @@
         </div>
     </div>
 
-    <!-- Floating Eye Tracker -->
-    <div id="gaze-eye">
-        <div class="eye-outer">
-            <div class="eye-inner">
-                <div class="eye-pupil"></div>
+    <!-- Floating Eye Tracker - Two Eyes -->
+    <div id="gaze-eyes">
+        <div class="eye-pair">
+            <div class="single-eye left-eye">
+                <div class="eye-white">
+                    <div class="eye-iris">
+                        <div class="eye-pupil"></div>
+                    </div>
+                </div>
+                <div class="eyelid top-lid"></div>
+                <div class="eyelid bottom-lid"></div>
+            </div>
+            <div class="single-eye right-eye">
+                <div class="eye-white">
+                    <div class="eye-iris">
+                        <div class="eye-pupil"></div>
+                    </div>
+                </div>
+                <div class="eyelid top-lid"></div>
+                <div class="eyelid bottom-lid"></div>
             </div>
         </div>
     </div>
+
+    <!-- Audio Waveform Visualizer -->
+    <div id="audio-visualizer">
+        <div class="audio-header">
+            <span class="audio-icon">🎤</span>
+            <span class="audio-label">AUDIO INPUT</span>
+            <span id="audio-status" class="audio-status">AWAITING ACCESS</span>
+        </div>
+        <canvas id="waveform-canvas"></canvas>
+        <div id="audio-level">
+            <span class="level-label">LEVEL:</span>
+            <div class="level-bar-container">
+                <div id="level-bar" class="level-bar"></div>
+            </div>
+            <span id="level-value">0 dB</span>
+        </div>
+    </div>
+
+    <!-- Movement Wave Effect Canvas -->
+    <canvas id="wave-canvas"></canvas>
 
     <script src="js/observer.js"></script>
 </body>

@@ -1,6 +1,6 @@
 /* =====================================================
    THE OBSERVER EFFECT - Observer JavaScript
-   Updated: Curatorial text moves below fold on consent
+   Surveillance, tracking, AI analysis, audio, and wave effects
    ===================================================== */
 
 // =====================================================
@@ -161,9 +161,6 @@ async function requestMediaAccess() {
         state.videoStream = videoStream;
         state.webcamActive = true;
         
-        // Add camera-active class to body to trigger curatorial text animation
-        document.body.classList.add('camera-active');
-        
         elements.webcam.onloadedmetadata = () => {
             elements.webcam.play();
             createDetectionCanvas();
@@ -179,7 +176,6 @@ async function requestMediaAccess() {
         
         addObservation('CAMERA', 'Subject has consented to visual observation');
         addObservation('AI', 'Initiating facial analysis protocols...');
-        addObservation('SYSTEM', 'Curatorial context deferred - subject is the primary exhibit');
         
     } catch (err) {
         console.log('Camera access denied:', err);
@@ -200,13 +196,12 @@ async function requestMediaAccess() {
         addObservation('AUDIO', 'Microphone access denied');
     }
     
-    updateTicker('MEDIA ACCESS GRANTED — VISUAL & AUDIO OBSERVATION ACTIVE — YOU ARE THE EXHIBITION');
+    updateTicker('MEDIA ACCESS GRANTED — VISUAL & AUDIO OBSERVATION ACTIVE');
 }
 
 function denyCamera() {
     elements.modal.classList.add('hidden');
     document.body.classList.add('camera-denied');
-    // Don't add camera-active, so curatorial text stays at top
     
     elements.userEyeColor.textContent = 'NO VISUAL';
     elements.userHairColor.textContent = 'NO VISUAL';
@@ -880,8 +875,7 @@ function generateTickerContent() {
         'OBSERVATION CREATES REALITY',
         'YOU ARE WATCHING — YOU ARE BEING WATCHED',
         'THE SCREEN IS NOT NEUTRAL',
-        'IDENTITY IS PERFORMED — IDENTITY IS CONSUMED',
-        'YOU ARE THE EXHIBITION'
+        'IDENTITY IS PERFORMED — IDENTITY IS CONSUMED'
     ];
     messages.push(philosophical[Math.floor(Math.random() * philosophical.length)]);
     
